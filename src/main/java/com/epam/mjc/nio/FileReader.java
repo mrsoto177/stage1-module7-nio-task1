@@ -65,7 +65,7 @@ public class FileReader {
         File file = new File("src/main/resources/Profile.txt");
         FileReader fileReader = new FileReader();
         Profile profile = fileReader.getDataFromFile(file);
-        logger.info("" + profile);
+        logger.info( profile.toString());
     }
 }
 

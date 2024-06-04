@@ -4,15 +4,15 @@ import java.io.File;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.file.StandardOpenOption;
+import java.util.logging.Logger;
 
 
 public class FileReader {
 	public Profile getDataFromFile(File file) {
+		Logger logger = Logger.getLogger("MyLog");
         Profile profile = new Profile();
 
         // Path to the file
@@ -20,7 +20,7 @@ public class FileReader {
 
         // Ensure the file exists
         if (!Files.exists(path)) {
-            System.out.println("File does not exist");
+            logger.info("There is no Files");
             return profile;
         }
 
@@ -61,10 +61,11 @@ public class FileReader {
     }
 
     public static void main(String[] args) {
+    	Logger logger = Logger.getLogger("MyLog");
         File file = new File("src/main/resources/Profile.txt");
         FileReader fileReader = new FileReader();
         Profile profile = fileReader.getDataFromFile(file);
-        System.out.println(profile);
+        logger.info("" + profile);
     }
 }
 
